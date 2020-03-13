@@ -14,7 +14,7 @@ server.use('/api/projects', projectRouter);
 server.use('/api/actions', actionRouter);
 
 server.get('/',  (req, res) => {
-  res.status(200).json({"its working! its working!"});
+  res.status(200).json({Dustin: "its working! its working!"});
 });
 
 //custom middleware
