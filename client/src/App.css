@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Caveat&display=swap');
+
+.App {
+  text-align: center;
+}
+
+h2 {
+  color: #23bae9;
+}
+
+p {
+  font-family: 'Caveat', cursive;
+}
+
+button {
+  border-radius: 18px;
+  background-color: darkorange;
+  padding: 10px 20px;
+  font-size: 1.25rem;
+  color: rgb(5, 16, 107);
+  text-transform: uppercase;
+  cursor: pointer;
+
+}
+
+
+
