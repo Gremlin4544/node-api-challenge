@@ -1,26 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './App.css';
+import { Route, Link } from 'react-router-dom';
+
+import Project from './components/Project.js';
+import Home from './components/Home.js';
 
 function App() {
+  const [projects, setProjects] = useState(null);
+
+  useEffect(() => {
+    axios.get('http://localhost:5000/api/projects')
+      .then(response => {
+        //console.log(response);
+        setProjects(response.data);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        <h1>Projects and Actions
+        </h1>
+        <nav>
+          {projects && projects.map(project => {
+            return (
+              <div key={project.id}>
+                <Link to={`/projects/${project.id}`}>
+                  {project.name}
+                </Link>
+              </div>
+            )
+          })}
+        </nav>
       </header>
+    <Route exact path='/projects' component={Home} />
+    <Route exact path='/projects/:id' component={Project} />
+
     </div>
   );
 }
 
 export default App;
+
+//<Project project={project} />
+//render={(props) => <Project {...props} projects={projects}
