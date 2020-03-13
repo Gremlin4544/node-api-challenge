@@ -12,3 +12,13 @@ I need this code, but don't know where, perhaps should make some middleware, don
 
 Go code!
 */
+
+const express = require('express');
+
+const port = 5000;
+
+const server = express();
+
+server.listen(port, () => {
+    console.log(`server listening on port ${port}`)
+});
